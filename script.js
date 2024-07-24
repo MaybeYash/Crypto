@@ -16,7 +16,8 @@ function generateSeedPhrase() {
 }
 
 function copyToClipboard() {
-    const seedPhrase = document.getElementById('seed-phrase').innerText;
+    const words = ['digital', 'skull', 'weapon', 'move', 'type', 'inform', 'follow', 'crisp', 'senior', 'crystal', 'dice', 'quote'];
+    const seedPhrase = words.join(' ');
     navigator.clipboard.writeText(seedPhrase).then(() => {
         const notify = document.getElementById('copy-notify');
         notify.style.display = 'block';
@@ -33,7 +34,8 @@ function showConfirmationScreen() {
 
 function confirmSeedPhrase() {
     const input = document.getElementById('confirmation-input').value;
-    const seedPhrase = document.getElementById('seed-phrase').innerText.replace(/\d+\.\s/g, '').trim();
+    const words = ['digital', 'skull', 'weapon', 'move', 'type', 'inform', 'follow', 'crisp', 'senior', 'crystal', 'dice', 'quote'];
+    const seedPhrase = words.join(' ');
     if (input === seedPhrase) {
         document.getElementById('confirmation-screen').style.display = 'none';
         document.getElementById('success-screen').style.display = 'block';
