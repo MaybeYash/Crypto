@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wallet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="welcome-screen">
+            <h1>Welcome to MemeFi Coin</h1>
+            <button onclick="showSeedPhraseScreen()">Create Wallet</button>
+            <button>Log In</button>
+        </div>
+        <div id="seed-phrase-screen" style="display: none;">
+            <h1>Your Secret Phrase</h1>
+            <p>The phrase is a really important combination of words that will help you recover your wallet if you're logged out or lose your device.</p>
+            <div id="seed-phrase"></div>
+            <button onclick="copyToClipboard()">Copy To Clipboard</button>
+            <button onclick="showConfirmationScreen()">Saved, Continue</button>
+        </div>
+        <div id="confirmation-screen" style="display: none;">
+            <h1>Confirm Your Secret Phrase</h1>
+            <p>Please enter your seed phrase to confirm.</p>
+            <input type="text" id="confirmation-input" placeholder="Enter seed phrase here">
+            <button onclick="confirmSeedPhrase()">Confirm</button>
+        </div>
+        <div id="success-screen" style="display: none;">
+            <h1>Wallet Created Successfully!</h1>
+            <button onclick="showWalletInterface()">View Wallet</button>
+            <button>Proceed</button>
+        </div>
+        <div id="wallet-interface" style="display: none;">
+            <h1>My Wallet</h1>
+            <div id="balance">
+                <h2>Balance: 0 MEMEFI</h2>
+                <h3>$0.00</h3>
+            </div>
+            <div class="buttons">
+                <button class="wallet-btn" onclick="receiveCrypto()">Receive</button>
+                <button class="wallet-btn" onclick="sendCrypto()">Send</button>
+            </div>
+            <div id="assets">
+                <h2>Assets</h2>
+                <ul>
+                    <li>USDT: 0</li>
+                    <li>BTC: 0</li>
+                    <li>ETH: 0</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
