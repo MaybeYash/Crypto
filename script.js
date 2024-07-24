@@ -6,14 +6,23 @@ function showSeedPhraseScreen() {
 
 function generateSeedPhrase() {
     const words = ['digital', 'skull', 'weapon', 'move', 'type', 'inform', 'follow', 'crisp', 'senior', 'crystal', 'dice', 'quote'];
-    const seedPhrase = words.join(' ');
-    document.getElementById('seed-phrase').innerText = seedPhrase;
+    const seedPhraseBox = document.getElementById('seed-phrase');
+    seedPhraseBox.innerHTML = '';
+    words.forEach((word, index) => {
+        const div = document.createElement('div');
+        div.textContent = `${index + 1}. ${word}`;
+        seedPhraseBox.appendChild(div);
+    });
 }
 
 function copyToClipboard() {
     const seedPhrase = document.getElementById('seed-phrase').innerText;
     navigator.clipboard.writeText(seedPhrase).then(() => {
-        alert('Seed phrase copied to clipboard');
+        const notify = document.getElementById('copy-notify');
+        notify.style.display = 'block';
+        setTimeout(() => {
+            notify.style.display = 'none';
+        }, 2000);
     });
 }
 
@@ -24,7 +33,7 @@ function showConfirmationScreen() {
 
 function confirmSeedPhrase() {
     const input = document.getElementById('confirmation-input').value;
-    const seedPhrase = document.getElementById('seed-phrase').innerText;
+    const seedPhrase = document.getElementById('seed-phrase').innerText.replace(/\d+\.\s/g, '').trim();
     if (input === seedPhrase) {
         document.getElementById('confirmation-screen').style.display = 'none';
         document.getElementById('success-screen').style.display = 'block';
@@ -44,4 +53,4 @@ function receiveCrypto() {
 
 function sendCrypto() {
     alert('Sending crypto functionality will be here.');
-      }
+}
